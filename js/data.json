@@ -1,0 +1,394 @@
+{
+  "meta": {
+    "company": "Pearl Safari",
+    "tagline": "Explore the Pearl of Africa",
+    "location": "Kabale, Uganda",
+    "phone": "+256 700 123 456",
+    "email": "info@pearlsafari.ug",
+    "whatsapp": "+256700123456",
+    "social": {
+      "facebook": "https://facebook.com/pearlsafari",
+      "instagram": "https://instagram.com/pearlsafari",
+      "twitter": "https://twitter.com/pearlsafari",
+      "youtube": "https://youtube.com/pearlsafari"
+    }
+  },
+
+  "categories": [
+    { "id": "all",      "label": "All",           "icon": "fas fa-globe-africa" },
+    { "id": "parks",    "label": "National Parks", "icon": "fas fa-tree" },
+    { "id": "lakes",    "label": "Lakes",          "icon": "fas fa-water" },
+    { "id": "mountains","label": "Mountains",      "icon": "fas fa-mountain" },
+    { "id": "culture",  "label": "Culture",        "icon": "fas fa-drum" },
+    { "id": "wildlife", "label": "Wildlife",       "icon": "fas fa-paw" },
+    { "id": "adventure","label": "Adventure",      "icon": "fas fa-hiking" }
+  ],
+
+  "attractions": [
+    {
+      "id": "bwindi",
+      "name": "Bwindi Impenetrable National Park",
+      "slug": "bwindi-impenetrable-national-park",
+      "category": ["parks", "wildlife"],
+      "region": "Southwest Uganda",
+      "coordinates": { "lat": -1.0333, "lng": 29.6833 },
+      "rating": 4.9,
+      "duration": "2-3 days",
+      "bestTime": "Jun–Aug, Dec–Feb",
+      "tagline": "Home of the Mountain Gorillas",
+      "shortDesc": "Trek through ancient rainforest to encounter endangered mountain gorillas in their natural habitat.",
+      "fullDesc": "Bwindi Impenetrable National Park is a UNESCO World Heritage Site located in southwestern Uganda. It is home to almost half of the world's remaining mountain gorillas, making it one of the most important conservation sites in Africa. The park covers 321 km² of ancient montane forest and is a biodiversity hotspot with over 120 mammal species, 350 bird species, and 200+ tree species. Gorilla trekking is the headline experience, but Bwindi also offers forest walks, community visits, and birding.",
+      "highlights": ["Mountain Gorilla Trekking", "Forest Bird Watching", "Community Cultural Visits", "Night Forest Walks"],
+      "images": [
+        "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=800",
+        "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=800",
+        "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=1400",
+      "video": "https://www.youtube.com/embed/Xb4nM7GS1jU",
+      "featured": true,
+      "price": "From $700/person"
+    },
+    {
+      "id": "queen-elizabeth",
+      "name": "Queen Elizabeth National Park",
+      "slug": "queen-elizabeth-national-park",
+      "category": ["parks", "wildlife"],
+      "region": "Western Uganda",
+      "coordinates": { "lat": 0.0000, "lng": 30.0000 },
+      "rating": 4.8,
+      "duration": "2-4 days",
+      "bestTime": "Jun–Sep, Dec–Feb",
+      "tagline": "Uganda's Most Popular Safari Destination",
+      "shortDesc": "Boat safaris, tree-climbing lions, and vast savannah teeming with wildlife on the Kazinga Channel.",
+      "fullDesc": "Queen Elizabeth National Park is Uganda's most visited national park, renowned for its remarkable biodiversity. Straddling the equator in western Uganda, it features savannah, wetlands, forests, and lakes. The famous Kazinga Channel boat cruise offers close encounters with hippos, elephants, and hundreds of bird species. The park is also home to the unique tree-climbing lions of the Ishasha sector.",
+      "highlights": ["Kazinga Channel Boat Cruise", "Tree-Climbing Lions (Ishasha)", "Game Drives", "Birding (600+ species)"],
+      "images": [
+        "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800",
+        "https://images.unsplash.com/photo-1551085254-e96b210db58a?w=800",
+        "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1400",
+      "video": "https://www.youtube.com/embed/Xb4nM7GS1jU",
+      "featured": true,
+      "price": "From $200/person"
+    },
+    {
+      "id": "murchison-falls",
+      "name": "Murchison Falls National Park",
+      "slug": "murchison-falls-national-park",
+      "category": ["parks", "wildlife", "adventure"],
+      "region": "Northwest Uganda",
+      "coordinates": { "lat": 2.2833, "lng": 31.7833 },
+      "rating": 4.8,
+      "duration": "2-3 days",
+      "bestTime": "Dec–Feb, Jun–Aug",
+      "tagline": "The Most Powerful Waterfall on Earth",
+      "shortDesc": "Watch the mighty Nile squeeze through a 7-metre gorge, then explode into a thunderous 43-metre drop.",
+      "fullDesc": "Murchison Falls National Park is Uganda's largest and oldest conservation area, covering 3,893 km². The park is bisected by the Victoria Nile which plunges 43 metres through a narrow 7-metre gorge creating the spectacular Murchison Falls. Beyond the waterfall, the park supports large populations of elephants, hippos, crocodiles, and the rare Rothschild giraffe. Boat trips to the base of the falls are unmissable.",
+      "highlights": ["Murchison Falls Waterfall", "Nile Boat Safari", "Game Drives", "Top of the Falls Hike", "Rothschild Giraffe"],
+      "images": [
+        "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800",
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+        "https://images.unsplash.com/photo-1551085254-e96b210db58a?w=800"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1400",
+      "video": "https://www.youtube.com/embed/Xb4nM7GS1jU",
+      "featured": true,
+      "price": "From $180/person"
+    },
+    {
+      "id": "kidepo",
+      "name": "Kidepo Valley National Park",
+      "slug": "kidepo-valley-national-park",
+      "category": ["parks", "wildlife", "adventure"],
+      "region": "Northeast Uganda",
+      "coordinates": { "lat": 3.8667, "lng": 33.8500 },
+      "rating": 4.9,
+      "duration": "3-4 days",
+      "bestTime": "Jun–Aug",
+      "tagline": "Africa's Most Remote Safari Gem",
+      "shortDesc": "Untouched wilderness with dramatic landscapes, diverse wildlife and the authentic raw African experience.",
+      "fullDesc": "Kidepo Valley National Park is often cited as one of Africa's finest national parks, yet remains one of Uganda's best-kept secrets due to its remote location in the Karamoja region. The park is characterized by broad savannah valleys surrounded by mountains and rugged terrain. It hosts over 77 mammal species including cheetahs, hunting dogs, and ostriches — species not found in any other Ugandan park.",
+      "highlights": ["Rare Wildlife (Cheetah, Ostrich)", "Narus Valley Game Drives", "Karamojong Cultural Experience", "Scenic Mountain Views"],
+      "images": [
+        "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800",
+        "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800",
+        "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=800"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1400",
+      "video": "https://www.youtube.com/embed/Xb4nM7GS1jU",
+      "featured": true,
+      "price": "From $250/person"
+    },
+    {
+      "id": "lake-bunyonyi",
+      "name": "Lake Bunyonyi",
+      "slug": "lake-bunyonyi",
+      "category": ["lakes", "adventure"],
+      "region": "Southwest Uganda",
+      "coordinates": { "lat": -1.3000, "lng": 29.8833 },
+      "rating": 4.7,
+      "duration": "1-2 days",
+      "bestTime": "Year-round",
+      "tagline": "Africa's Most Beautiful Lake",
+      "shortDesc": "A stunning terraced landscape with 29 islands, known as the 'Switzerland of Africa'.",
+      "fullDesc": "Lake Bunyonyi is nestled in the hills of Kabale in southwestern Uganda, close to the border with Rwanda. It is considered one of the most scenic lakes in Africa, with its 29 islands surrounded by steep terraced hillsides covered with banana plants and eucalyptus trees. The lake is bilharzia-free, making it safe for swimming. Activities include canoe trips, island visits, bird watching, and cultural experiences with the Bakiga people.",
+      "highlights": ["Canoe Island Hopping", "Swimming (Bilharzia-free)", "Bird Watching", "Bakiga Cultural Experiences", "Scenic Hill Hikes"],
+      "images": [
+        "https://images.unsplash.com/photo-1580502304784-8985b7eb7260?w=800",
+        "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800",
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1580502304784-8985b7eb7260?w=1400",
+      "video": "https://www.youtube.com/embed/Xb4nM7GS1jU",
+      "featured": true,
+      "price": "From $80/person"
+    },
+    {
+      "id": "rwenzori",
+      "name": "Rwenzori Mountains",
+      "slug": "rwenzori-mountains",
+      "category": ["mountains", "adventure"],
+      "region": "Western Uganda",
+      "coordinates": { "lat": 0.3833, "lng": 29.9167 },
+      "rating": 4.8,
+      "duration": "7-10 days",
+      "bestTime": "Jun–Aug, Dec–Feb",
+      "tagline": "The Mountains of the Moon",
+      "shortDesc": "Climb the legendary 'Mountains of the Moon' — Africa's third highest peak through Afro-alpine wonderland.",
+      "fullDesc": "The Rwenzori Mountains, known as the 'Mountains of the Moon', are a UNESCO World Heritage Site on the border of Uganda and the Democratic Republic of Congo. The range includes Margherita Peak (5,109m), Africa's third highest point. The mountains are home to unique Afro-alpine vegetation including giant heathers, lobelias, and groundsels. Trekking through the Rwenzoris is an extraordinary adventure through multiple ecological zones.",
+      "highlights": ["Margherita Peak Summit (5,109m)", "Afro-Alpine Vegetation", "Glaciers & Snowfields", "Waterfalls & Rivers", "Unique Bird Species"],
+      "images": [
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+        "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800",
+        "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=800"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400",
+      "video": "https://www.youtube.com/embed/Xb4nM7GS1jU",
+      "featured": false,
+      "price": "From $1200/person"
+    },
+    {
+      "id": "lake-mburo",
+      "name": "Lake Mburo National Park",
+      "slug": "lake-mburo-national-park",
+      "category": ["parks", "wildlife", "lakes"],
+      "region": "Western Uganda",
+      "coordinates": { "lat": -0.6167, "lng": 30.9500 },
+      "rating": 4.6,
+      "duration": "1-2 days",
+      "bestTime": "Jun–Sep",
+      "tagline": "Uganda's Zebra Capital",
+      "shortDesc": "Uganda's only park with zebras and impalas, perfect for walking safaris and horseback riding.",
+      "fullDesc": "Lake Mburo National Park is the smallest of Uganda's savannah national parks and the closest to Kampala. It is home to zebras, impalas, elands, buffaloes, and over 350 bird species. The park is one of the few in Uganda where walking safaris and horseback riding are permitted, offering intimate wildlife encounters. Lake Mburo itself hosts hippos and crocodiles, best viewed on a boat cruise.",
+      "highlights": ["Zebra & Impala Sightings", "Walking Safari", "Horseback Riding", "Lake Boat Cruise", "Night Game Drive"],
+      "images": [
+        "https://images.unsplash.com/photo-1551085254-e96b210db58a?w=800",
+        "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800",
+        "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1551085254-e96b210db58a?w=1400",
+      "video": "https://www.youtube.com/embed/Xb4nM7GS1jU",
+      "featured": false,
+      "price": "From $150/person"
+    },
+    {
+      "id": "mgahinga",
+      "name": "Mgahinga Gorilla National Park",
+      "slug": "mgahinga-gorilla-national-park",
+      "category": ["parks", "wildlife", "mountains"],
+      "region": "Southwest Uganda",
+      "coordinates": { "lat": -1.3667, "lng": 29.6500 },
+      "rating": 4.7,
+      "duration": "1-2 days",
+      "bestTime": "Jun–Aug, Dec–Feb",
+      "tagline": "Gorillas & Golden Monkeys on the Volcanoes",
+      "shortDesc": "Track mountain gorillas and golden monkeys against the backdrop of three ancient volcanoes.",
+      "fullDesc": "Mgahinga Gorilla National Park sits in the Virunga Mountains in southwestern Uganda, protecting a critical section of the Albertine Rift. Along with mountain gorilla trekking, the park offers golden monkey tracking — a unique experience found only in this area. The three volcanoes — Gahinga, Muhavura, and Sabinyo — can be climbed for spectacular views of the Virunga range.",
+      "highlights": ["Mountain Gorilla Trekking", "Golden Monkey Tracking", "Volcano Hiking", "Batwa Cultural Experience", "Bird Watching"],
+      "images": [
+        "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=800",
+        "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=800",
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=1400",
+      "video": "https://www.youtube.com/embed/Xb4nM7GS1jU",
+      "featured": false,
+      "price": "From $700/person"
+    },
+    {
+      "id": "lake-mutanda",
+      "name": "Lake Mutanda",
+      "slug": "lake-mutanda",
+      "category": ["lakes", "adventure"],
+      "region": "Southwest Uganda",
+      "coordinates": { "lat": -1.2500, "lng": 29.7167 },
+      "rating": 4.6,
+      "duration": "1 day",
+      "bestTime": "Year-round",
+      "tagline": "Hidden Gem of the Southwest",
+      "shortDesc": "A breathtaking lake encircled by volcanoes, perfect for kayaking with views of the Virunga chain.",
+      "fullDesc": "Lake Mutanda is one of Uganda's most scenic lakes, situated in the Kisoro district amidst a dramatic landscape of volcanoes. The lake is characterized by its crystal-clear waters and the stunning backdrop of the Virunga volcanic chain. Canoe and kayak tours on the lake offer spectacular views of Mgahinga, Muhabura, and Gahinga volcanoes. Fishing and camping on the lakeshore are popular activities.",
+      "highlights": ["Kayaking & Canoeing", "Volcano Views", "Fishing", "Lakeshore Camping", "Photography"],
+      "images": [
+        "https://images.unsplash.com/photo-1580502304784-8985b7eb7260?w=800",
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+        "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1580502304784-8985b7eb7260?w=1400",
+      "video": null,
+      "featured": false,
+      "price": "From $60/person"
+    },
+    {
+      "id": "hot-springs",
+      "name": "Sempaya Hot Springs",
+      "slug": "sempaya-hot-springs",
+      "category": ["adventure", "parks"],
+      "region": "Western Uganda",
+      "coordinates": { "lat": 0.7167, "lng": 30.1500 },
+      "rating": 4.5,
+      "duration": "Half day",
+      "bestTime": "Year-round",
+      "tagline": "Earth's Natural Boiling Cauldrons",
+      "shortDesc": "Marvel at boiling geysers in Semuliki National Park where water erupts at over 100°C.",
+      "fullDesc": "The Sempaya Hot Springs are located within Semuliki National Park in western Uganda. There are two main hot springs — the female spring 'Bitente' and the male spring 'Bintente'. The female spring is a geyser that shoots boiling water and steam several metres into the air. The area is surrounded by the Semuliki forest, one of Uganda's oldest and most biodiverse forests, with over 400 bird species.",
+      "highlights": ["Boiling Geysers", "Forest Bird Watching", "Semuliki Forest Walk", "Cultural Significance", "Photography"],
+      "images": [
+        "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800",
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+        "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1400",
+      "video": null,
+      "featured": false,
+      "price": "From $50/person"
+    },
+    {
+      "id": "batwa-culture",
+      "name": "Batwa Cultural Experience",
+      "slug": "batwa-cultural-experience",
+      "category": ["culture"],
+      "region": "Southwest Uganda",
+      "coordinates": { "lat": -1.1000, "lng": 29.7500 },
+      "rating": 4.8,
+      "duration": "Half day",
+      "bestTime": "Year-round",
+      "tagline": "Walk with Africa's Ancient Forest People",
+      "shortDesc": "Live a day with the Batwa pygmies, the original forest dwellers with centuries of deep forest knowledge.",
+      "fullDesc": "The Batwa are the original inhabitants of the Bwindi and Mgahinga forests, known as 'the forest people'. A Batwa cultural experience offers an extraordinary insight into their traditional way of life — hunting with bows and arrows, gathering forest plants, honey harvesting, and traditional dances and storytelling. This experience supports Batwa community development while preserving their unique cultural heritage.",
+      "highlights": ["Traditional Forest Skills", "Batwa Dance & Music", "Honey Harvesting", "Traditional Medicine Walk", "Storytelling"],
+      "images": [
+        "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=800",
+        "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=800",
+        "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=1400",
+      "video": null,
+      "featured": false,
+      "price": "From $45/person"
+    },
+    {
+      "id": "source-of-nile",
+      "name": "Source of the Nile",
+      "slug": "source-of-the-nile",
+      "category": ["adventure", "culture"],
+      "region": "Central Uganda",
+      "coordinates": { "lat": 0.4167, "lng": 33.2000 },
+      "rating": 4.6,
+      "duration": "1 day",
+      "bestTime": "Year-round",
+      "tagline": "Where the World's Longest River Begins",
+      "shortDesc": "Stand at the spot where the Nile River begins its epic 6,650 km journey to the Mediterranean Sea.",
+      "fullDesc": "The Source of the Nile at Jinja is where the world's longest river begins its journey from Lake Victoria to the Mediterranean Sea. Jinja offers some of the best white-water rafting in Africa on Grade 5 rapids, along with bungee jumping, kayaking, and quad biking. The town itself has a vibrant cultural scene and is considered Uganda's adventure capital.",
+      "highlights": ["White-Water Rafting (Grade 5)", "Bungee Jumping", "Source of the Nile Boat Trip", "Kayaking", "Sunset Cruise"],
+      "images": [
+        "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800",
+        "https://images.unsplash.com/photo-1580502304784-8985b7eb7260?w=800",
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1400",
+      "video": "https://www.youtube.com/embed/Xb4nM7GS1jU",
+      "featured": false,
+      "price": "From $120/person"
+    }
+  ],
+
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Sarah Mitchell",
+      "country": "United Kingdom",
+      "flag": "🇬🇧",
+      "avatar": "https://randomuser.me/api/portraits/women/32.jpg",
+      "rating": 5,
+      "text": "Trekking to see the mountain gorillas in Bwindi was the single most profound wildlife experience of my life. Pearl Safari handled every detail perfectly.",
+      "attraction": "Bwindi Impenetrable Forest",
+      "date": "March 2024"
+    },
+    {
+      "id": 2,
+      "name": "James Okonkwo",
+      "country": "Nigeria",
+      "flag": "🇳🇬",
+      "avatar": "https://randomuser.me/api/portraits/men/45.jpg",
+      "rating": 5,
+      "text": "Kidepo Valley is unlike anything I've ever seen. The raw wilderness, the silence, the wildlife — Pearl Safari made this dream a reality.",
+      "attraction": "Kidepo Valley National Park",
+      "date": "June 2024"
+    },
+    {
+      "id": 3,
+      "name": "Anna Bergström",
+      "country": "Sweden",
+      "flag": "🇸🇪",
+      "avatar": "https://randomuser.me/api/portraits/women/67.jpg",
+      "rating": 5,
+      "text": "Lake Bunyonyi at sunset is pure magic. Our guide was knowledgeable, warm, and made us feel like family. We will definitely be back!",
+      "attraction": "Lake Bunyonyi",
+      "date": "August 2024"
+    },
+    {
+      "id": 4,
+      "name": "David Chen",
+      "country": "Singapore",
+      "flag": "🇸🇬",
+      "avatar": "https://randomuser.me/api/portraits/men/22.jpg",
+      "rating": 5,
+      "text": "The boat cruise on Murchison Falls was breathtaking. Watching the Nile burst through that gorge is something I'll carry with me forever.",
+      "attraction": "Murchison Falls",
+      "date": "December 2023"
+    }
+  ],
+
+  "stats": [
+    { "value": 12,   "suffix": "+", "label": "Years Experience" },
+    { "value": 850,  "suffix": "+", "label": "Happy Tourists" },
+    { "value": 24,   "suffix": "+", "label": "Destinations" },
+    { "value": 100,  "suffix": "%", "label": "Safe Travel Record" }
+  ],
+
+  "why_us": [
+    {
+      "icon": "fas fa-shield-alt",
+      "title": "Safe & Trusted",
+      "desc": "12+ years of safe tours. All guides are certified, experienced, and deeply passionate about Uganda."
+    },
+    {
+      "icon": "fas fa-leaf",
+      "title": "Eco-Responsible",
+      "desc": "We operate sustainably, supporting local communities and conservation efforts in every park we visit."
+    },
+    {
+      "icon": "fas fa-headset",
+      "title": "24/7 Support",
+      "desc": "From booking to return, our team is always available to ensure your safari exceeds expectations."
+    },
+    {
+      "icon": "fas fa-tag",
+      "title": "Best Value",
+      "desc": "Premium experiences at honest prices. We tailor packages to fit every budget without compromising quality."
+    }
+  ]
+}

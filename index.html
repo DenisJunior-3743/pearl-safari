@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       Pearl Safari — Home Page (index.html)
+       
+       PAGE FLOW:
+         Hero → Stats Bar → Featured Destinations
+         → Why Us → Map → Testimonials → CTA → Footer
+       ============================================================ -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO meta tags -->
+  <title>Pearl Safari Uganda | Explore the Pearl of Africa</title>
+  <meta name="description" content="Pearl Safari connects you to Uganda's most breathtaking destinations — gorilla trekking, Murchison Falls, Lake Bunyonyi, Kidepo Valley and more. Plan your safari today.">
+  <meta name="keywords" content="Uganda safari, gorilla trekking, Bwindi, Murchison Falls, Kidepo, Lake Bunyonyi, Uganda tourism, Pearl Safari">
+  <meta name="author" content="Pearl Safari Uganda">
+
+  <!-- Open Graph (social sharing previews) -->
+  <meta property="og:title" content="Pearl Safari Uganda — Explore the Pearl of Africa">
+  <meta property="og:description" content="Unforgettable safaris across Uganda's national parks, lakes, and mountains.">
+  <meta property="og:image" content="assets/images/og-image.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+
+  <!-- Google Fonts: Playfair Display (display) + Lato (body) + Montserrat (accent) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 — icons throughout the site -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS — Animate on Scroll library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Leaflet CSS — map styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+
+  <!-- Pearl Safari — single unified stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       PRELOADER
+       Shows while page resources are loading
+       ============================================================ -->
+  <div id="preloader">
+    <div class="preloader-icon">
+      <i class="fas fa-leaf"></i>
+    </div>
+    <div class="preloader-text">Pearl Safari</div>
+    <div class="preloader-bar">
+      <div class="preloader-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       NAVBAR PLACEHOLDER
+       components.js will replace this with the full navbar HTML.
+       ============================================================ -->
+  <div id="navbar-placeholder"></div>
+
+
+  <!-- ============================================================
+       HERO SECTION
+       Full-screen background with animated text overlay.
+       Using fallback image until video is added.
+       ============================================================ -->
+  <section class="hero" id="hero">
+
+    <!-- Background slides -->
+    <div class="hero-slides" id="hero-slides">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+        <source src="assets/videos/uganda-safari-hero.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Dark overlay for text readability -->
+    <div class="hero-overlay"></div>
+
+    <!-- Hero text content -->
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-map-marker-alt"></i> Uganda, East Africa</div>
+        <h1 class="hero-title">
+          <span class="hero-word w1">Explore</span>
+          <span class="hero-word w2">the</span><br>
+          <em>
+            <span class="hero-word w3">Pearl</span>
+            <span class="hero-word w4">of</span>
+            <span class="hero-word w5">Africa</span>
+          </em>
+        </h1>
+        <p class="hero-subtitle">
+          <span class="hero-subtitle-shake">
+            From gorilla trekking to game drives, discover Uganda’s most breathtaking safari experiences.
+          </span>
+        </p>
+        <div class="hero-actions">
+          <a href="#featured" class="btn btn-accent">Explore Tours</a>
+          <a href="#contact" class="btn btn-outline">Plan Your Trip</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide indicator dots (wired up in animations.js) -->
+    <div class="hero-dots">
+      <button class="hero-dot active" aria-label="Slide 1"></button>
+      <button class="hero-dot" aria-label="Slide 2"></button>
+      <button class="hero-dot" aria-label="Slide 3"></button>
+      <button class="hero-dot" aria-label="Slide 4"></button>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+
+  </section><!-- /.hero -->
+
+
+  <!-- ============================================================
+       STATS BAR
+       Quick trust signals immediately below the hero.
+       Numbers animate up when scrolled into view (animations.js).
+       ============================================================ -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-bar-grid">
+
+        <div class="stats-bar-item">
+          <span class="stats-bar-value" data-counter="12" data-suffix="+">0+</span>
+          <span class="stats-bar-label">Years Experience</span>
+        </div>
+
+        <div class="stats-bar-item">
+          <span class="stats-bar-value" data-counter="850" data-suffix="+">0+</span>
+          <span class="stats-bar-label">Happy Tourists</span>
+        </div>
+
+        <div class="stats-bar-item">
+          <span class="stats-bar-value" data-counter="24" data-suffix="+">0+</span>
+          <span class="stats-bar-label">Destinations</span>
+        </div>
+
+        <div class="stats-bar-item">
+          <span class="stats-bar-value" data-counter="100" data-suffix="%">0%</span>
+          <span class="stats-bar-label">Safe Travel Record</span>
+        </div>
+
+      </div><!-- /.stats-bar-grid -->
+    </div>
+  </div><!-- /.stats-bar -->
+
+
+  <!-- ============================================================
+       FEATURED DESTINATIONS
+       Loaded dynamically from data.json by main.js.
+       Cards use the featured-grid layout (first card spans 2 rows).
+       ============================================================ -->
+  <section class="section bg-white" id="featured">
+    <div class="container">
+
+      <!-- Section header -->
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label">Top Destinations</span>
+        <h2>Uganda's Most Spectacular Places</h2>
+        <div class="divider"></div>
+        <p>From UNESCO World Heritage forests to vast savannah plains — hand-picked by our expert guides.</p>
+      </div>
+
+      <!-- Cards grid — populated by main.js -->
+      <div class="featured-grid" id="featured-grid">
+        <!-- JS renders attraction cards here from data.json -->
+        <!-- Skeleton loaders shown while data loads -->
+        <div class="attraction-card skeleton" style="height:300px;border-radius:16px;"></div>
+        <div class="attraction-card skeleton" style="height:140px;border-radius:16px;"></div>
+        <div class="attraction-card skeleton" style="height:140px;border-radius:16px;"></div>
+      </div>
+
+      <!-- View all CTA -->
+      <div class="text-center" style="margin-top:3rem;" data-aos="fade-up">
+        <a href="discover.html" class="btn btn-outline-dark">
+          <i class="fas fa-map-marked-alt"></i>
+          View All Destinations
+        </a>
+      </div>
+
+    </div>
+  </section><!-- /#featured -->
+
+
+  <!-- ============================================================
+       WHY CHOOSE US
+       4 trust-building cards explaining Pearl Safari's value.
+       Content loaded from data.json (why_us array) by main.js.
+       ============================================================ -->
+  <section class="section bg-surface" id="why-us">
+    <div class="container">
+
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label">Why Pearl Safari</span>
+        <h2>The Safari Experience You Deserve</h2>
+        <div class="divider"></div>
+        <p>We don't just book tours. We craft journeys that stay with you forever.</p>
+      </div>
+
+      <!-- Grid populated by main.js -->
+      <div class="why-us-grid" id="why-us-grid">
+        <!-- JS renders why cards here -->
+      </div>
+
+    </div>
+  </section><!-- /#why-us -->
+
+
+  <!-- ============================================================
+       INTERACTIVE MAP
+       Leaflet.js map of Uganda showing all attraction pins.
+       map.js handles marker creation and popup content.
+       ============================================================ -->
+  <section class="map-section" id="map">
+    <div class="container">
+
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label">Explore Uganda</span>
+        <h2>Discover Uganda on the Map</h2>
+        <div class="divider"></div>
+        <p>Click any marker to preview an attraction and get directions.</p>
+      </div>
+
+      <!-- Map container — Leaflet renders inside this div -->
+      <div id="uganda-map" data-aos="fade-up" data-aos-delay="100"></div>
+
+    </div>
+  </section><!-- /#map -->
+
+
+  <!-- ============================================================
+       CATEGORIES PREVIEW
+       Quick visual grid of the main tourism categories.
+       Clicking a category goes to discover.html?category=parks etc.
+       ============================================================ -->
+  <section class="section bg-white" id="categories">
+    <div class="container">
+
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label">Explore by Type</span>
+        <h2>What Kind of Explorer Are You?</h2>
+        <div class="divider"></div>
+      </div>
+
+      <!-- Category cards — created inline here (not from JS for simplicity) -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;" id="category-grid">
+
+        <!-- National Parks -->
+        <a href="discover.html?category=parks" class="category-card" data-aos="fade-up" data-aos-delay="0"
+          style="
+            position:relative;height:280px;border-radius:16px;overflow:hidden;
+            display:flex;align-items:flex-end;cursor:pointer;text-decoration:none;
+          ">
+          <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&auto=format&fit=crop"
+               alt="National Parks"
+               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,27,15,0.8),transparent);"></div>
+          <div style="position:relative;z-index:1;padding:1.5rem;color:white;">
+            <div style="font-family:Montserrat,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f9a825;margin-bottom:4px;">Explore</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.35rem;color:white;margin:0;">National Parks</h3>
+            <p style="font-size:0.8rem;color:rgba(255,255,255,0.75);margin:4px 0 0;">Queen Elizabeth · Kidepo · Murchison</p>
+          </div>
+        </a>
+
+        <!-- Lakes -->
+        <a href="discover.html?category=lakes" class="category-card" data-aos="fade-up" data-aos-delay="100"
+          style="
+            position:relative;height:280px;border-radius:16px;overflow:hidden;
+            display:flex;align-items:flex-end;cursor:pointer;text-decoration:none;
+          ">
+          <img src="https://images.unsplash.com/photo-1580502304784-8985b7eb7260?w=800&auto=format&fit=crop"
+               alt="Lakes"
+               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,27,15,0.8),transparent);"></div>
+          <div style="position:relative;z-index:1;padding:1.5rem;color:white;">
+            <div style="font-family:Montserrat,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f9a825;margin-bottom:4px;">Explore</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.35rem;color:white;margin:0;">Lakes & Waterways</h3>
+            <p style="font-size:0.8rem;color:rgba(255,255,255,0.75);margin:4px 0 0;">Bunyonyi · Mutanda · Mburo</p>
+          </div>
+        </a>
+
+        <!-- Mountains -->
+        <a href="discover.html?category=mountains" class="category-card" data-aos="fade-up" data-aos-delay="200"
+          style="
+            position:relative;height:280px;border-radius:16px;overflow:hidden;
+            display:flex;align-items:flex-end;cursor:pointer;text-decoration:none;
+          ">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop"
+               alt="Mountains"
+               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,27,15,0.8),transparent);"></div>
+          <div style="position:relative;z-index:1;padding:1.5rem;color:white;">
+            <div style="font-family:Montserrat,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f9a825;margin-bottom:4px;">Explore</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.35rem;color:white;margin:0;">Mountains</h3>
+            <p style="font-size:0.8rem;color:rgba(255,255,255,0.75);margin:4px 0 0;">Rwenzori · Mgahinga · Elgon</p>
+          </div>
+        </a>
+
+        <!-- Culture -->
+        <a href="discover.html?category=culture" class="category-card" data-aos="fade-up" data-aos-delay="0"
+          style="
+            position:relative;height:280px;border-radius:16px;overflow:hidden;
+            display:flex;align-items:flex-end;cursor:pointer;text-decoration:none;
+          ">
+          <img src="https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=800&auto=format&fit=crop"
+               alt="Culture"
+               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,27,15,0.8),transparent);"></div>
+          <div style="position:relative;z-index:1;padding:1.5rem;color:white;">
+            <div style="font-family:Montserrat,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f9a825;margin-bottom:4px;">Explore</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.35rem;color:white;margin:0;">Culture & Heritage</h3>
+            <p style="font-size:0.8rem;color:rgba(255,255,255,0.75);margin:4px 0 0;">Batwa · Karamojong · Kingdoms</p>
+          </div>
+        </a>
+
+        <!-- Wildlife -->
+        <a href="discover.html?category=wildlife" class="category-card" data-aos="fade-up" data-aos-delay="100"
+          style="
+            position:relative;height:280px;border-radius:16px;overflow:hidden;
+            display:flex;align-items:flex-end;cursor:pointer;text-decoration:none;
+          ">
+          <img src="https://images.unsplash.com/photo-1551085254-e96b210db58a?w=800&auto=format&fit=crop"
+               alt="Wildlife"
+               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,27,15,0.8),transparent);"></div>
+          <div style="position:relative;z-index:1;padding:1.5rem;color:white;">
+            <div style="font-family:Montserrat,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f9a825;margin-bottom:4px;">Explore</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.35rem;color:white;margin:0;">Wildlife & Safari</h3>
+            <p style="font-size:0.8rem;color:rgba(255,255,255,0.75);margin:4px 0 0;">Gorillas · Lions · Elephants</p>
+          </div>
+        </a>
+
+        <!-- Adventure -->
+        <a href="discover.html?category=adventure" class="category-card" data-aos="fade-up" data-aos-delay="200"
+          style="
+            position:relative;height:280px;border-radius:16px;overflow:hidden;
+            display:flex;align-items:flex-end;cursor:pointer;text-decoration:none;
+          ">
+          <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800&auto=format&fit=crop"
+               alt="Adventure"
+               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,27,15,0.8),transparent);"></div>
+          <div style="position:relative;z-index:1;padding:1.5rem;color:white;">
+            <div style="font-family:Montserrat,sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f9a825;margin-bottom:4px;">Explore</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.35rem;color:white;margin:0;">Adventure & Thrills</h3>
+            <p style="font-size:0.8rem;color:rgba(255,255,255,0.75);margin:4px 0 0;">Rafting · Trekking · Bungee</p>
+          </div>
+        </a>
+
+      </div><!-- /#category-grid -->
+
+    </div>
+  </section><!-- /#categories -->
+
+
+  <!-- ============================================================
+       TESTIMONIALS
+       Loaded from data.json testimonials array by main.js.
+       ============================================================ -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="container">
+
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label">Guest Stories</span>
+        <h2>Words from Our Travellers</h2>
+        <div class="divider"></div>
+        <p>Real experiences from real explorers who discovered Uganda with us.</p>
+      </div>
+
+      <!-- Testimonials grid — populated by main.js -->
+      <div class="testimonials-grid" id="testimonials-grid">
+        <!-- JS renders testimonial cards here -->
+      </div>
+
+    </div>
+  </section><!-- /#testimonials -->
+
+
+  <!-- ============================================================
+       CTA BANNER
+       Bold bottom-of-page call to action before the footer.
+       ============================================================ -->
+  <section style="
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-dark) 100%);
+    padding: 5rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  ">
+    <!-- Decorative circle -->
+    <div style="position:absolute;width:600px;height:600px;border-radius:50%;background:rgba(255,255,255,0.03);top:-300px;right:-150px;pointer-events:none;"></div>
+
+    <div class="container" style="position:relative;z-index:1;" data-aos="fade-up">
+      <span class="section-label" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);">Ready to Explore?</span>
+      <h2 style="color:white;font-size:3rem;margin:1rem 0 1.5rem;">Your Uganda Adventure<br><em style="color:var(--color-accent);">Starts Here</em></h2>
+      <p style="color:rgba(255,255,255,0.75);font-size:1.125rem;max-width:500px;margin:0 auto 2.5rem;">
+        Contact our expert team today. We'll design the perfect safari itinerary tailored just for you.
+      </p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-accent">
+          <i class="fas fa-calendar-check"></i>
+          Start Planning
+        </a>
+        <a href="discover.html" class="btn btn-outline">
+          <i class="fas fa-compass"></i>
+          Browse Destinations
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER PLACEHOLDER
+       components.js replaces this with the full footer HTML.
+       ============================================================ -->
+  <div id="footer-placeholder"></div>
+
+
+  <!-- ============================================================
+       SCRIPTS — Loaded in order (bottom of body for performance)
+       
+       1. jQuery — DOM utilities (components use it for animations)
+       2. Bootstrap Bundle — modals, dropdowns etc.
+       3. AOS — Animate on Scroll library
+       4. Leaflet — Interactive map
+       5. components.js — Navbar/footer injection (MUST be first custom script)
+       6. animations.js — All animation logic
+       7. map.js — Map initialization
+       8. main.js — Page-specific home logic
+       ============================================================ -->
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+  <!-- Bootstrap Bundle (includes Popper) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS — Animate on Scroll -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <!-- Leaflet JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+
+  <!-- Pearl Safari scripts -->
+  <script src="categories/components.js?v=1.0.0"></script>
+  <script src="categories/animations.js?v=1.0.0"></script>
+  <script src="categories/map.js?v=1.0.0"></script>
+  <script src="categories/main.js?v=1.0.0"></script>
+
+  <!-- Category card hover zoom (inline — too small for a separate file) -->
+  <script>
+    // Add hover scale effect to category cards
+    document.querySelectorAll('.category-card img').forEach(img => {
+      const card = img.parentElement;
+      card.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.08)'; });
+      card.addEventListener('mouseleave', () => { img.style.transform = 'scale(1)'; });
+    });
+  </script>
+<script>
+    // Add this at the beginning of the file or in a new section:
+
+    // Hero button stagger animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const heroButtons = document.querySelectorAll('.hero-actions .btn');
+      
+      heroButtons.forEach((btn, index) => {
+        btn.style.animation = `slideInUp 0.9s ${0.8 + (index * 0.15)}s cubic-bezier(0.34, 1.56, 0.64, 1) both`;
+      });
+
+      // Optional: Add hero dots animation
+      const heroDots = document.querySelectorAll('.hero-dot');
+      heroDots.forEach((dot, index) => {
+        dot.style.animation = `fadeIn 0.6s ${1.2 + (index * 0.1)}s ease-out both`;
+      });
+    });
+
+    // Fade in keyframe for dots
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+</script>
+</body>
+</html>

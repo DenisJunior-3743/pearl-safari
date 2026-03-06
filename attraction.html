@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       Pearl Safari — Attraction Detail Page (attraction.html)
+       Reads ?id=bwindi from the URL and renders that attraction's
+       full data from data.json. One HTML file, all destinations.
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Title and meta tags updated dynamically by attraction.js -->
+  <title>Destination | Pearl Safari Uganda</title>
+  <meta name="description" content="Explore Uganda's stunning tourist attraction with Pearl Safari.">
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <!-- ============================================================
+       DETAIL HERO — full-width image banner
+       Populated dynamically by attraction.js
+       ============================================================ -->
+  <section class="detail-hero" id="detail-hero">
+    <!-- Background image set by JS -->
+    <div class="detail-hero-overlay"></div>
+    <div class="container">
+      <div class="detail-hero-content" id="detail-hero-content">
+        <!-- JS injects: breadcrumb, title, tagline, meta tags -->
+        <!-- Skeleton while loading -->
+        <div class="skeleton" style="height:14px;width:200px;border-radius:4px;margin-bottom:1rem;background:rgba(255,255,255,0.2);"></div>
+        <div class="skeleton" style="height:52px;width:70%;border-radius:8px;margin-bottom:1rem;background:rgba(255,255,255,0.2);"></div>
+        <div class="skeleton" style="height:18px;width:40%;border-radius:4px;background:rgba(255,255,255,0.2);"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       DETAIL BODY — 2-column: main content + sticky sidebar
+       ============================================================ -->
+  <section class="detail-body">
+    <div class="container">
+      <div class="detail-layout" id="detail-layout">
+
+        <!-- ---- LEFT: Main Content ---- -->
+        <div class="detail-main" id="detail-main">
+
+          <!-- Breadcrumb navigation -->
+          <nav aria-label="Breadcrumb" style="margin-bottom:2rem;" data-aos="fade-up">
+            <ol style="display:flex;gap:0.5rem;align-items:center;list-style:none;font-family:var(--font-accent);font-size:0.8rem;color:var(--color-text-light);">
+              <li><a href="index.html" style="color:var(--color-primary);">Home</a></li>
+              <li style="color:var(--color-border);">/</li>
+              <li><a href="discover.html" style="color:var(--color-primary);">Discover</a></li>
+              <li style="color:var(--color-border);">/</li>
+              <li id="breadcrumb-name" style="color:var(--color-text-muted);">Loading…</li>
+            </ol>
+          </nav>
+
+          <!-- Overview section — injected by JS -->
+          <div id="detail-overview" data-aos="fade-up">
+            <!-- Skeleton -->
+            <div class="skeleton" style="height:28px;width:50%;border-radius:4px;margin-bottom:1.5rem;"></div>
+            <div class="skeleton" style="height:14px;border-radius:4px;margin-bottom:8px;"></div>
+            <div class="skeleton" style="height:14px;border-radius:4px;margin-bottom:8px;"></div>
+            <div class="skeleton" style="height:14px;width:80%;border-radius:4px;margin-bottom:2rem;"></div>
+          </div>
+
+          <!-- Highlights section -->
+          <div id="detail-highlights" data-aos="fade-up" data-aos-delay="100"></div>
+
+          <!-- Photo gallery -->
+          <div id="detail-gallery" data-aos="fade-up" data-aos-delay="150"></div>
+
+          <!-- Video section -->
+          <div id="detail-video" data-aos="fade-up" data-aos-delay="200"></div>
+
+          <!-- Related attractions -->
+          <div id="detail-related" data-aos="fade-up" data-aos-delay="250"></div>
+
+        </div><!-- /.detail-main -->
+
+        <!-- ---- RIGHT: Sticky Sidebar ---- -->
+        <aside class="detail-sidebar" id="detail-sidebar" data-aos="fade-left">
+          <!-- Injected by attraction.js with booking card content -->
+          <div class="detail-sidebar-card">
+            <div class="skeleton" style="height:40px;width:60%;border-radius:4px;margin-bottom:1.5rem;"></div>
+            <div class="skeleton" style="height:14px;border-radius:4px;margin-bottom:8px;"></div>
+            <div class="skeleton" style="height:14px;border-radius:4px;margin-bottom:8px;"></div>
+            <div class="skeleton" style="height:14px;width:70%;border-radius:4px;margin-bottom:2rem;"></div>
+            <div class="skeleton" style="height:48px;border-radius:9999px;"></div>
+          </div>
+        </aside>
+
+      </div><!-- /.detail-layout -->
+    </div>
+  </section>
+
+
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="categories/components.js?v=1.0.0"></script>
+  <script src="categories/animations.js?v=1.0.0"></script>
+  <script src="categories/attraction.js?v=1.0.0"></script>
+
+</body>
+</html>
