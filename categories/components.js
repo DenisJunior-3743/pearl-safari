@@ -221,7 +221,7 @@ function buildFooter() {
               </p>
               <p style="font-size:0.8rem;color:rgba(255,255,255,0.45);margin-bottom:0.5rem;">
                 <i class="fas fa-phone" style="color:#2e7d32;margin-right:6px;"></i>
-                +256 700 123 456
+                +256 773 162370 / +256 705 595370
               </p>
               <p style="font-size:0.8rem;color:rgba(255,255,255,0.45);">
                 <i class="fas fa-envelope" style="color:#2e7d32;margin-right:6px;"></i>
@@ -276,7 +276,7 @@ function buildWhatsApp() {
   return `
     <!-- ===== WHATSAPP FLOAT ===== -->
     <a
-      href="https://wa.me/256700123456?text=Hello%20Pearl%20Safari%2C%20I'm%20interested%20in%20a%20safari%20trip%20to%20Uganda!"
+      href="https://wa.me/256773162370?text=Hello%20Pearl%20Safari%2C%20I'm%20interested%20in%20a%20safari%20trip%20to%20Uganda!"
       class="whatsapp-float"
       target="_blank"
       rel="noopener noreferrer"

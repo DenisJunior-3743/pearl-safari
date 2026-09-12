@@ -355,7 +355,7 @@ function populateSidebar(attraction) {
 
       <!-- WhatsApp quick contact -->
       <a
-        href="https://wa.me/256700123456?text=Hi%20Pearl%20Safari%2C%20I'm%20interested%20in%20visiting%20${encodeURIComponent(attraction.name)}!"
+        href="https://wa.me/256773162370?text=Hi%20Pearl%20Safari%2C%20I'm%20interested%20in%20visiting%20${encodeURIComponent(attraction.name)}!"
         class="btn btn-outline-dark"
         style="width:100%;justify-content:center;"
         target="_blank"
