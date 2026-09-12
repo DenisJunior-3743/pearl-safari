@@ -1392,10 +1392,46 @@ p { font-size: var(--fs-base); color: var(--color-text-muted); line-height: 1.8;
 /* ==========================================================================
    17. ATTRACTION DETAIL PAGE
    ========================================================================== */
-.detail-hero { height: 70vh; min-height: 480px; position: relative; overflow: hidden; display: flex; align-items: flex-end; }
+.detail-hero {
+  height: 62vh;
+  min-height: 460px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  background-color: #0d1b0f;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.detail-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 35%, rgba(255,152,0,0.12), transparent 45%);
+  pointer-events: none;
+  z-index: 2;
+}
+/* Crossfade slide layers — two stacked divs swapped by JS */
+.detail-hero-slide {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 0;
+}
+.detail-hero-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+.detail-hero.detail-hero-lowres .detail-hero-slide {
+  background-size: contain;
+}
 .detail-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.detail-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,27,15,0.85) 0%, transparent 60%); }
-.detail-hero-content { position: relative; z-index: 1; padding: var(--sp-12) 0; width: 100%; }
+.detail-hero-overlay { position: absolute; inset: 0; z-index: 3; background: linear-gradient(to top, rgba(13,27,15,0.88) 0%, rgba(13,27,15,0.40) 55%, rgba(13,27,15,0.20) 100%); }
+.detail-hero-content { position: relative; z-index: 4; padding: var(--sp-12) 0; width: 100%; }
 .detail-hero-content h1 { color: var(--color-white); font-size: var(--fs-4xl); margin-bottom: var(--sp-3); }
 .detail-hero-content .tagline { color: var(--color-accent); font-family: var(--font-accent); font-size: var(--fs-md); font-weight: 600; margin-bottom: var(--sp-4); }
 

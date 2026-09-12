@@ -21,6 +21,7 @@
  */
 
 
+
 /* ----------------------------------------------------------
    MODULE STATE
    Single source of truth for the current filter/search/sort.
@@ -153,7 +154,6 @@ function buildDiscoverCard(attraction, index) {
           src="${attraction.images[0]}"
           alt="${attraction.name}"
           loading="lazy"
-          onerror="this.src='assets/images/placeholder.jpg'"
         >
         <!-- Category badge -->
         <div class="card-category-badge">
@@ -374,11 +374,17 @@ async function initDiscoverPage() {
   readURLParams(); // Must run before render so active category is set
 
   try {
-    const response = await fetch('./js/data.json');
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
-
-    state.allAttractions = data.attractions;
+    let data;
+    if (window.PearlImageResolver?.loadAttractionsWithLocalImages) {
+      const resolved = await window.PearlImageResolver.loadAttractionsWithLocalImages();
+      data = resolved.data;
+      state.allAttractions = resolved.attractions;
+    } else {
+      const response = await fetch('./js/data.json');
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      data = await response.json();
+      state.allAttractions = data.attractions;
+    }
 
     // Render filter buttons (with correct active state from URL)
     renderFilterButtons(data.categories);

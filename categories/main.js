@@ -15,6 +15,7 @@
  */
 
 
+
 /* ----------------------------------------------------------
    RENDER: FEATURED ATTRACTIONS
    Populates the featured-grid with the first N attractions
@@ -37,7 +38,6 @@ function renderFeaturedAttractions(attractions) {
           src="${attr.images[0]}"
           alt="${attr.name}"
           loading="lazy"
-          onerror="this.src='https://via.placeholder.com/400x300?text=${encodeURIComponent(attr.name)}'"
         >
         <div class="card-img-overlay"></div>
         
@@ -108,52 +108,6 @@ function renderWhyUs(whyUsData) {
 
 
 /* ----------------------------------------------------------
-   RENDER: TESTIMONIALS
-   Grid of guest reviews. Maps testimonial stars and info.
-   Data comes from data.json testimonials array
-   ---------------------------------------------------------- */
-function renderTestimonials(testimonials) {
-  const grid = document.getElementById('testimonials-grid');
-  if (!grid || !testimonials) return;
-
-  grid.innerHTML = testimonials.slice(0, 4).map((review, idx) => `
-    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="${idx * 100}">
-      <!-- Quote icon (background accent) -->
-      <div class="testimonial-quote-icon">"</div>
-
-      <!-- Review text -->
-      <p class="testimonial-text">
-        "${review.text}"
-      </p>
-
-      <!-- Author info -->
-      <div class="testimonial-author">
-        <img
-          src="${review.avatar || 'https://via.placeholder.com/48'}"
-          alt="${review.name}"
-          class="testimonial-avatar"
-          loading="lazy"
-        >
-        <div class="testimonial-info">
-          <div class="name">${review.name}</div>
-          <div class="origin">${review.origin}</div>
-          ${review.attraction ? `
-            <div class="testimonial-attraction">
-              📍 ${review.attraction}
-            </div>
-          ` : ''}
-        </div>
-      </div>
-    </div>
-  `).join('');
-
-  if (window.AOS) {
-    AOS.refresh();
-  }
-}
-
-
-/* ----------------------------------------------------------
    UTILITY: Map category ID to icon class
    Used in featured attractions badges
    ---------------------------------------------------------- */
@@ -194,15 +148,24 @@ function getCategoryLabel(categoryId) {
    ---------------------------------------------------------- */
 async function loadHomeData() {
   try {
-    const response = await fetch('./js/data.json');
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
+    let data;
+    let attractions;
+
+    if (window.PearlImageResolver?.loadAttractionsWithLocalImages) {
+      const resolved = await window.PearlImageResolver.loadAttractionsWithLocalImages();
+      data = resolved.data;
+      attractions = resolved.attractions;
+    } else {
+      const response = await fetch('./js/data.json');
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      data = await response.json();
+      attractions = data.attractions;
+    }
 
     // Render each section with its slice of data
-    renderFeaturedAttractions(data.attractions);
+    renderFeaturedAttractions(attractions);
     renderWhyUs(data.why_us);
-    renderTestimonials(data.testimonials);
-    
+
     // Hide preloader once content is loaded
     if (typeof hidePreloader === 'function') {
       hidePreloader();

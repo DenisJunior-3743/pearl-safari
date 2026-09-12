@@ -47,6 +47,7 @@ const MAP_CONFIG = {
 };
 
 
+
 /* ----------------------------------------------------------
    initMap()
    Main function. Called from index.html and discover.html
@@ -65,9 +66,14 @@ async function initMap() {
   // Load attraction data from JSON
   let attractions;
   try {
-    const response = await fetch('./js/data.json');
-    const data     = await response.json();
-    attractions    = data.attractions;
+    if (window.PearlImageResolver?.loadAttractionsWithLocalImages) {
+      const resolved = await window.PearlImageResolver.loadAttractionsWithLocalImages();
+      attractions = resolved.attractions;
+    } else {
+      const response = await fetch('./js/data.json');
+      const data = await response.json();
+      attractions = data.attractions;
+    }
     // Hide preloader once map data loads
     if (typeof hidePreloader === 'function') {
       hidePreloader();

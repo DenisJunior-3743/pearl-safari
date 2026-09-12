@@ -19,6 +19,34 @@
  * ============================================================
  */
 
+let detailHeroSlideInterval = null;
+const HERO_MIN_WIDTH = 1200;
+const HERO_MIN_HEIGHT = 700;
+
+function probeImage(src) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      resolve({ src, width: img.naturalWidth || 0, height: img.naturalHeight || 0 });
+    };
+    img.onerror = () => resolve({ src, width: 0, height: 0 });
+    img.src = src;
+  });
+}
+
+async function buildHeroPlaylist(images) {
+  const uniqueImages = [...new Set(images.filter(Boolean))];
+  const probed = await Promise.all(uniqueImages.map(probeImage));
+  const sorted = probed.sort((a, b) => (b.width * b.height) - (a.width * a.height));
+  const preferred = sorted.filter(img => img.width >= HERO_MIN_WIDTH && img.height >= HERO_MIN_HEIGHT);
+  const chosen = preferred.length ? preferred : sorted;
+
+  return {
+    playlist: chosen.map(img => img.src),
+    topImage: chosen[0] || null,
+  };
+}
+
 
 /* ----------------------------------------------------------
    READ ATTRACTION ID FROM URL
@@ -35,15 +63,60 @@ function getAttractionId() {
    Sets the background image, title, tagline, and meta tags
    in the full-width hero banner at the top.
    ---------------------------------------------------------- */
-function populateHero(attraction) {
+async function populateHero(attraction) {
   const hero = document.getElementById('detail-hero');
   const heroContent = document.getElementById('detail-hero-content');
+  const heroImages = Array.isArray(attraction.images) && attraction.images.length
+    ? attraction.images
+    : [attraction.heroImage].filter(Boolean);
 
-  // Set hero background image
+  // Set and cycle hero background images every 2 seconds with smooth crossfade.
   if (hero) {
-    hero.style.backgroundImage = `url('${attraction.heroImage}')`;
-    hero.style.backgroundSize  = 'cover';
-    hero.style.backgroundPosition = 'center';
+    if (detailHeroSlideInterval) {
+      clearInterval(detailHeroSlideInterval);
+      detailHeroSlideInterval = null;
+    }
+
+    const { playlist, topImage } = await buildHeroPlaylist(heroImages);
+    const firstImage = (playlist[0] || attraction.heroImage || heroImages[0]);
+    const isLowRes = !topImage || topImage.width < HERO_MIN_WIDTH || topImage.height < HERO_MIN_HEIGHT;
+    hero.classList.toggle('detail-hero-lowres', isLowRes);
+
+    // Clear any old inline background and slide layers (e.g. page re-init)
+    hero.style.backgroundImage = '';
+    hero.querySelectorAll('.detail-hero-slide').forEach(el => el.remove());
+
+    // Create two stacked slide layers for CSS opacity crossfade.
+    // Layer A = currently visible; Layer B = preloaded next image.
+    const overlay = hero.querySelector('.detail-hero-overlay');
+    const layerA = document.createElement('div');
+    const layerB = document.createElement('div');
+    layerA.className = 'detail-hero-slide active';
+    layerB.className = 'detail-hero-slide';
+    layerA.style.backgroundImage = `url('${firstImage}')`;
+    layerB.style.backgroundImage = `url('${playlist[1] || firstImage}')`;
+    // Insert both before the overlay so it draws above them
+    hero.insertBefore(layerB, overlay);
+    hero.insertBefore(layerA, overlay);
+
+    if (playlist.length > 1) {
+      let currentIndex = 0;
+      detailHeroSlideInterval = setInterval(() => {
+        const nextIndex = (currentIndex + 1) % playlist.length;
+        const nextNextIndex = (nextIndex + 1) % playlist.length;
+        const activeEl = hero.querySelector('.detail-hero-slide.active');
+        const inactiveEl = hero.querySelector('.detail-hero-slide:not(.active)');
+        // Fade in the preloaded layer (it gets z-index:1 via .active CSS)
+        inactiveEl.classList.add('active');
+        activeEl.classList.remove('active');
+        // After the 0.8s transition completes, silently update the now-hidden layer
+        //  with the image after next so it's ready for the following swap.
+        setTimeout(() => {
+          activeEl.style.backgroundImage = `url('${playlist[nextNextIndex]}')`;
+        }, 850);
+        currentIndex = nextIndex;
+      }, 2000);
+    }
   }
 
   // Build star rating string
@@ -456,12 +529,22 @@ async function initAttractionPage() {
   }
 
   try {
-    const response = await fetch('./js/data.json');
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
+    let data;
+    let attractions;
+
+    if (window.PearlImageResolver?.loadAttractionsWithLocalImages) {
+      const resolved = await window.PearlImageResolver.loadAttractionsWithLocalImages();
+      data = resolved.data;
+      attractions = resolved.attractions;
+    } else {
+      const response = await fetch('./js/data.json');
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      data = await response.json();
+      attractions = data.attractions;
+    }
 
     // Find the attraction by id
-    const attraction = data.attractions.find(a => a.id === id);
+    const attraction = attractions.find(a => a.id === id);
 
     if (!attraction) {
       show404();
@@ -469,13 +552,13 @@ async function initAttractionPage() {
     }
 
     // Populate all page sections
-    populateHero(attraction);
+    await populateHero(attraction);
     populateOverview(attraction);
     populateHighlights(attraction);
     populateGallery(attraction);
     populateVideo(attraction);
     populateSidebar(attraction);
-    populateRelated(attraction, data.attractions);
+    populateRelated(attraction, attractions);
 
     // Refresh AOS after all content injected
     if (typeof AOS !== 'undefined') {
@@ -499,3 +582,8 @@ async function initAttractionPage() {
 }
 
 document.addEventListener('DOMContentLoaded', initAttractionPage);
+window.addEventListener('beforeunload', () => {
+  if (detailHeroSlideInterval) {
+    clearInterval(detailHeroSlideInterval);
+  }
+});
