@@ -225,7 +225,7 @@ function buildFooter() {
               </p>
               <p style="font-size:0.8rem;color:rgba(255,255,255,0.45);">
                 <i class="fas fa-envelope" style="color:#2e7d32;margin-right:6px;"></i>
-                info@pearlsafari.ug
+                kihangoandrew87@gmail.com
               </p>
             </div>
           </div>
