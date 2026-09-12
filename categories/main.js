@@ -40,7 +40,7 @@ function renderFeaturedAttractions(attractions) {
           loading="lazy"
         >
         <div class="card-img-overlay"></div>
-        
+
         <!-- Category badge -->
         ${attr.category && attr.category[0] ? `
           <div class="card-category-badge">
@@ -50,12 +50,6 @@ function renderFeaturedAttractions(attractions) {
             </span>
           </div>
         ` : ''}
-        
-        <!-- Rating badge -->
-        <div class="card-rating-badge">
-          <i class="fas fa-star"></i>
-          ${attr.rating}
-        </div>
       </div>
 
       <div class="card-body">

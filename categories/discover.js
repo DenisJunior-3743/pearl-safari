@@ -161,23 +161,6 @@ function buildDiscoverCard(attraction, index) {
             ${attraction.category[0].toUpperCase()}
           </span>
         </div>
-        <!-- Rating -->
-        <div class="card-rating-badge">
-          <i class="fas fa-star"></i>
-          ${attraction.rating}
-        </div>
-        <!-- Featured star badge -->
-        ${attraction.featured ? `
-          <div style="
-            position:absolute;bottom:var(--sp-3);left:var(--sp-3);z-index:2;
-            background:var(--color-accent);color:var(--color-dark);
-            padding:2px 8px;border-radius:9999px;
-            font-family:var(--font-accent);font-size:0.65rem;font-weight:700;
-            text-transform:uppercase;letter-spacing:0.08em;
-          ">
-            <i class="fas fa-star"></i> Featured
-          </div>
-        ` : ''}
         <div class="card-img-overlay"></div>
       </div>
 
