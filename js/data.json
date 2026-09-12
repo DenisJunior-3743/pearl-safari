@@ -52,6 +52,37 @@
     ],
     "attractions": [
         {
+            "id": "uganda-highlights-safari",
+            "name": "9-Day Uganda Highlights Safari",
+            "slug": "9-day-uganda-highlights-safari",
+            "category": ["parks", "wildlife", "adventure"],
+            "region": "Uganda-wide",
+            "coordinates": { "lat": 0.3476, "lng": 32.5825 },
+            "rating": 4.9,
+            "duration": "9 days",
+            "bestTime": "Jun–Aug, Dec–Feb",
+            "tagline": "The Best of Uganda in One Unforgettable Journey",
+            "shortDesc": "A complete 9-day safari combining gorilla trekking, savanna game drives, and Nile boat safaris across Uganda's top parks.",
+            "fullDesc": "Our signature 9-day itinerary brings together Uganda's most iconic experiences in one seamless journey — mountain gorilla trekking in Bwindi, tree-climbing lions and a Kazinga Channel boat cruise in Queen Elizabeth National Park, and the thundering Nile waters of Murchison Falls. Built for travellers who want to experience the full breadth of Uganda's wildlife and landscapes without piecing together a trip themselves, this package includes transport, accommodation guidance, and expert local guides throughout.",
+            "highlights": [
+                "Mountain Gorilla Trekking (Bwindi)",
+                "Tree-Climbing Lions & Boat Cruise (Queen Elizabeth)",
+                "Murchison Falls Nile Safari",
+                "Expert Local Guides Throughout"
+            ],
+            "images": [
+                "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162462/pearl-safari/bwindi/mountain-gorilla-closeup.jpg",
+                "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162500/pearl-safari/queen_elizabeth/tree-climbing-lion.jpg",
+                "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162833/pearl-safari/murchison_falls/falls.jpg",
+                "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162525/pearl-safari/kidepoWild/kidepo4.jpg",
+                "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162459/pearl-safari/bwindi/gorilla.jpg"
+            ],
+            "heroImage": "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162462/pearl-safari/bwindi/mountain-gorilla-closeup.jpg",
+            "video": null,
+            "featured": true,
+            "price": "From $3600/person"
+        },
+        {
             "id": "bwindi",
             "name": "Bwindi Impenetrable National Park",
             "slug": "bwindi-impenetrable-national-park",
@@ -65,7 +96,7 @@
                 "lng": 29.6833
             },
             "rating": 4.9,
-            "duration": "2-3 days",
+            "duration": "3 days",
             "bestTime": "Jun–Aug, Dec–Feb",
             "tagline": "Home of the Mountain Gorillas",
             "shortDesc": "Trek through ancient rainforest to encounter endangered mountain gorillas in their natural habitat.",
@@ -100,7 +131,7 @@
             "heroImage": "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162459/pearl-safari/bwindi/gorilla.jpg",
             "video": null,
             "featured": true,
-            "price": "From $700/person"
+            "price": "From $1100/person"
         },
         {
             "id": "queen-elizabeth",
@@ -425,6 +456,33 @@
             "video": "https://res.cloudinary.com/dfqksoqvx/video/upload/f_auto,q_auto/v1789162602/pearl-safari/mgahinga/mgahinga-trip.mp4",
             "featured": false,
             "price": "From $700/person"
+        },
+        {
+            "id": "kigali-city-tour",
+            "name": "Kigali City Tour",
+            "slug": "kigali-city-tour",
+            "category": ["culture"],
+            "region": "Kigali, Rwanda",
+            "coordinates": { "lat": -1.9441, "lng": 30.0619 },
+            "rating": 4.6,
+            "duration": "Full day",
+            "bestTime": "Year-round",
+            "tagline": "Rwanda's Vibrant Capital, Up Close",
+            "shortDesc": "A full-day guided tour of Kigali's markets, memorials, hills, and arts scene — a great add-on before or after your Uganda safari.",
+            "fullDesc": "Extend your journey across the border into Rwanda with a full-day guided tour of Kigali, one of Africa's cleanest and most welcoming capital cities. Highlights include the Kigali Genocide Memorial, bustling local markets, the Inema Arts Center, and panoramic viewpoints across the city's rolling hills — a relaxed, insightful add-on for travellers combining Uganda gorilla trekking with a stop in Rwanda.",
+            "highlights": [
+                "Kigali Genocide Memorial",
+                "Local Markets & Craft Shops",
+                "Inema Arts Center",
+                "City Viewpoints"
+            ],
+            "images": [
+                "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162606/pearl-safari/general/hotel-stopover.jpg"
+            ],
+            "heroImage": "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162606/pearl-safari/general/hotel-stopover.jpg",
+            "video": null,
+            "featured": false,
+            "price": "From $200/person"
         }
     ],
     "stats": [
