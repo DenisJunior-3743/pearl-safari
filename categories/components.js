@@ -363,32 +363,45 @@ function initNavbar() {
 
   // --- 3. Mobile hamburger toggle ---
   if (hamburger && mobileOverlay) {
-    hamburger.addEventListener('click', () => {
-      const isOpen = hamburger.classList.toggle('open');
+    function openMobileMenu() {
+      hamburger.classList.add('open');
       mobileOverlay.style.display = 'flex'; // ensure display:flex before opacity
       // Small delay lets display:flex take effect before opacity transition
       requestAnimationFrame(() => {
-        mobileOverlay.classList.toggle('open', isOpen);
+        mobileOverlay.classList.add('open');
       });
-      document.body.classList.toggle('menu-open', isOpen);
+      document.body.classList.add('menu-open');
+    }
+
+    function closeMobileMenu() {
+      hamburger.classList.remove('open');
+      mobileOverlay.classList.remove('open');
+      document.body.classList.remove('menu-open');
+      // Wait for the opacity transition to finish before removing from
+      // the layout — otherwise it keeps intercepting taps while invisible.
+      setTimeout(() => {
+        if (!mobileOverlay.classList.contains('open')) {
+          mobileOverlay.style.display = 'none';
+        }
+      }, 350);
+    }
+
+    hamburger.addEventListener('click', () => {
+      if (hamburger.classList.contains('open')) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
     });
 
     // Close mobile menu when any overlay link is clicked
     mobileOverlay.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileOverlay.classList.remove('open');
-        document.body.classList.remove('menu-open');
-      });
+      link.addEventListener('click', closeMobileMenu);
     });
 
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        hamburger.classList.remove('open');
-        mobileOverlay.classList.remove('open');
-        document.body.classList.remove('menu-open');
-      }
+      if (e.key === 'Escape') closeMobileMenu();
     });
   }
 }
