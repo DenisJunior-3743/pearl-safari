@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+       Pearl Safari — Gallery Page (gallery.html)
+       Aggregates photos + videos from every destination in one
+       place, filterable by destination. Reuses the same
+       .gallery-grid / .gallery-item markup and lightbox as the
+       per-destination galleries on attraction.html.
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo & Video Gallery | Pearl Safari Uganda</title>
+  <meta name="description" content="Browse photos and videos from every Pearl Safari destination — gorilla trekking, national parks, lakes, mountains and more.">
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <!-- ============================================================
+       PAGE HERO — compact, not full-screen
+       ============================================================ -->
+  <section style="
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-primary) 100%);
+    padding: calc(var(--navbar-height) + 4rem) 0 4rem;
+    position: relative; overflow: hidden;
+  ">
+    <div style="position:absolute;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,0.03);top:-200px;right:-100px;pointer-events:none;"></div>
+    <div style="position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.02);bottom:-100px;left:-50px;pointer-events:none;"></div>
+
+    <div class="container" style="position:relative;z-index:1;text-align:center;">
+      <span class="section-label" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.85);">
+        See It For Yourself
+      </span>
+      <h1 style="color:white;font-size:clamp(2rem,5vw,3.5rem);margin:1rem 0 1rem;">
+        Photo &amp; Video <em style="color:var(--color-accent);">Gallery</em>
+      </h1>
+      <p style="color:rgba(255,255,255,0.75);font-size:1.125rem;max-width:560px;margin:0 auto;">
+        Real photos and clips from every Pearl Safari destination. Pick a place below or browse everything.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FILTER BAR — one pill per destination that has media
+       ============================================================ -->
+  <div class="filter-section">
+    <div class="container">
+      <div class="filter-wrap" id="gallery-filter-wrap" role="group" aria-label="Filter by destination">
+        <div style="display:flex;gap:0.5rem;">
+          <div class="skeleton" style="width:110px;height:40px;border-radius:9999px;"></div>
+          <div class="skeleton" style="width:90px;height:40px;border-radius:9999px;"></div>
+          <div class="skeleton" style="width:100px;height:40px;border-radius:9999px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       PHOTOS
+       ============================================================ -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label">Photos</span>
+        <h2 id="gallery-photos-heading">All Destinations</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="gallery-grid gallery-grid-wide" id="gallery-photos-grid"></div>
+      <div id="gallery-empty-state" style="display:none;text-align:center;padding:4rem 2rem;">
+        <i class="fas fa-images" style="font-size:2.5rem;color:var(--color-border);margin-bottom:1rem;"></i>
+        <p style="color:var(--color-text-muted);">No photos yet for this destination.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       VIDEOS — hidden entirely when the current filter has none
+       ============================================================ -->
+  <section class="section bg-surface" id="gallery-videos-section" style="display:none;">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label">Videos</span>
+        <h2>Watch Highlights</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="gallery-grid gallery-grid-wide" id="gallery-videos-grid"></div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CTA BANNER
+       ============================================================ -->
+  <section style="
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-dark) 100%);
+    padding: 5rem 0; text-align: center;
+  ">
+    <div class="container" data-aos="fade-up">
+      <h2 style="color:white;font-size:2.5rem;margin-bottom:1rem;">
+        Ready to Create Your Own <em style="color:var(--color-accent);">Story?</em>
+      </h2>
+      <p style="color:rgba(255,255,255,0.75);font-size:1.125rem;max-width:500px;margin:0 auto 2.5rem;">
+        Let's plan a Uganda safari you'll be sharing photos of for years.
+      </p>
+      <a href="contact.html" class="btn btn-accent">
+        <i class="fas fa-calendar-check"></i>
+        Start Planning
+      </a>
+    </div>
+  </section>
+
+
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="categories/components.js?v=1.0.0"></script>
+  <script src="categories/animations.js?v=1.0.0"></script>
+  <script src="categories/image-resolver.js?v=1.0.0"></script>
+  <script src="categories/gallery.js?v=1.0.0"></script>
+
+</body>
+</html>

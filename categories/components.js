@@ -33,6 +33,7 @@
 const NAV_LINKS = [
   { href: 'index.html',      label: 'Home' },
   { href: 'discover.html',   label: 'Discover' },
+  { href: 'gallery.html',    label: 'Gallery' },
   { href: 'about.html',      label: 'About Us' },
   { href: 'contact.html',    label: 'Contact' },
 ];
