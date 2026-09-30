@@ -26,6 +26,7 @@
         ...attraction,
         images: Array.isArray(media.images) && media.images.length ? media.images : attraction.images,
         heroImage: media.heroImage || attraction.heroImage,
+        videos: Array.isArray(media.videos) && media.videos.length ? media.videos : (attraction.videos || []),
         video: media.video !== undefined ? media.video : attraction.video,
       };
     });

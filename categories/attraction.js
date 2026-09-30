@@ -12,7 +12,7 @@
  *       - Overview / description text
  *       - Highlights list
  *       - Photo gallery (with lightbox from animations.js)
- *       - Embedded YouTube video (if available)
+ *       - Video gallery (Cloudinary-hosted clips, same lightbox)
  *       - Sticky booking sidebar (price, info, CTA)
  *       - Related attractions from same category
  *  4. Handles 404 case (no matching attraction found)
@@ -165,6 +165,21 @@ async function populateHero(attraction) {
           ${attraction.price}
         </div>
       </div>
+
+      <!-- Quick jump links — gallery/video are further down the page,
+           so these give an immediate, easy-to-find way to reach them. -->
+      <div class="detail-hero-quicklinks">
+        ${attraction.images?.length ? `
+          <a href="#detail-gallery" class="btn btn-outline">
+            <i class="fas fa-images"></i> View Gallery
+          </a>
+        ` : ''}
+        ${(attraction.videos?.length || attraction.video) ? `
+          <a href="#detail-video" class="btn btn-outline">
+            <i class="fas fa-play-circle"></i> Watch Videos
+          </a>
+        ` : ''}
+      </div>
     `;
   }
 
@@ -258,35 +273,56 @@ function populateGallery(attraction) {
 
 
 /* ----------------------------------------------------------
-   POPULATE VIDEO
-   Embeds YouTube video in a responsive 16:9 wrapper.
-   Shows nothing if no video URL provided.
+   VIDEO POSTER HELPER
+   Cloudinary auto-generates a still frame for any uploaded video
+   when you request the same public ID with a .jpg extension —
+   used as the gallery tile thumbnail so we don't have to preload
+   the actual video just to show a poster image.
    ---------------------------------------------------------- */
-function populateVideo(attraction) {
+function videoPosterUrl(videoUrl) {
+  const withOffset = videoUrl.includes('/upload/so_')
+    ? videoUrl
+    : videoUrl.replace('/upload/', '/upload/so_1/');
+  return withOffset.replace(/\.(mp4|mov|webm)(\?.*)?$/i, '.jpg$2');
+}
+
+
+/* ----------------------------------------------------------
+   POPULATE VIDEO GALLERY
+   Grid of video poster thumbnails (lightbox logic in animations.js
+   plays the actual video when a tile is clicked).
+   Shows nothing if the attraction has no videos.
+   ---------------------------------------------------------- */
+function populateVideoGallery(attraction) {
   const el = document.getElementById('detail-video');
-  if (!el || !attraction.video) return;
+  const videos = Array.isArray(attraction.videos) && attraction.videos.length
+    ? attraction.videos
+    : (attraction.video ? [attraction.video] : []);
+  if (!el || !videos.length) return;
+
+  const items = videos.map((src, i) => `
+    <div class="gallery-item video-item" role="button" tabindex="0" aria-label="Play video ${i + 1}" data-video-src="${src}">
+      <img
+        src="${videoPosterUrl(src)}"
+        alt="${attraction.name} — video ${i + 1}"
+        loading="lazy"
+        onerror="this.style.display='none'"
+      >
+      <span class="video-play-icon"><i class="fas fa-play"></i></span>
+    </div>
+  `).join('');
 
   el.innerHTML = `
     <h3 style="font-size:var(--fs-xl);margin-bottom:1rem;">
       <i class="fas fa-play-circle" style="color:var(--color-primary);margin-right:0.5rem;"></i>
-      Video
+      Videos
     </h3>
-    <div style="
-      position:relative;padding-bottom:56.25%;height:0;overflow:hidden;
-      border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);
-    ">
-      <iframe
-        src="${attraction.video}"
-        title="${attraction.name} video"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        loading="lazy"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:var(--radius-lg);"
-      ></iframe>
-    </div>
+    <div class="gallery-grid">${items}</div>
     <div style="height:2.5rem;"></div>
   `;
+
+  // Re-run lightbox init so it picks up these newly added video tiles
+  if (typeof initLightbox === 'function') initLightbox();
 }
 
 
@@ -556,7 +592,7 @@ async function initAttractionPage() {
     populateOverview(attraction);
     populateHighlights(attraction);
     populateGallery(attraction);
-    populateVideo(attraction);
+    populateVideoGallery(attraction);
     populateSidebar(attraction);
     populateRelated(attraction, attractions);
 

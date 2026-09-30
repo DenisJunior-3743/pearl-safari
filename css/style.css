@@ -1438,6 +1438,9 @@ p { font-size: var(--fs-base); color: var(--color-text-muted); line-height: 1.8;
 .detail-meta-row { display: flex; flex-wrap: wrap; gap: var(--sp-4); align-items: center; }
 .detail-meta-tag { display: flex; align-items: center; gap: var(--sp-2); background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); color: var(--color-white); padding: var(--sp-2) var(--sp-3); border-radius: var(--radius-full); font-family: var(--font-accent); font-size: var(--fs-xs); font-weight: 600; border: 1px solid rgba(255,255,255,0.2); }
 
+.detail-hero-quicklinks { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-5); }
+.detail-hero-quicklinks .btn { padding: 0.65rem 1.25rem; font-size: var(--fs-xs); }
+
 .detail-body { padding: var(--sp-16) 0; }
 .detail-layout { display: grid; grid-template-columns: 1fr 340px; gap: var(--sp-12); align-items: start; }
 .detail-main, .detail-sidebar { min-width: 0; }
@@ -1463,14 +1466,28 @@ p { font-size: var(--fs-base); color: var(--color-text-muted); line-height: 1.8;
    18. GALLERY
    ========================================================================== */
 .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-3); }
-.gallery-item { aspect-ratio: 4/3; overflow: hidden; border-radius: var(--radius-md); cursor: pointer; }
+.gallery-item { position: relative; aspect-ratio: 4/3; overflow: hidden; border-radius: var(--radius-md); cursor: pointer; }
 .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
 .gallery-item:hover img { transform: scale(1.08); }
 
+.video-item .video-play-icon {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+}
+.video-item .video-play-icon i {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(13,27,15,0.55); color: var(--color-white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; padding-left: 3px; /* optically center the play glyph */
+  transition: var(--transition-fast);
+}
+.video-item:hover .video-play-icon i { background: var(--color-primary); transform: scale(1.08); }
+
 .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: var(--transition-base); }
 .lightbox.open { opacity: 1; visibility: visible; }
-.lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: var(--radius-md); }
-.lightbox-close { position: absolute; top: var(--sp-6); right: var(--sp-6); color: var(--color-white); font-size: var(--fs-2xl); cursor: pointer; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); border-radius: 50%; transition: var(--transition-fast); }
+.lightbox img, .lightbox video { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: var(--radius-md); }
+.lightbox img[hidden], .lightbox video[hidden] { display: none; }
+.lightbox-close { position: absolute; top: var(--sp-6); right: var(--sp-6); color: var(--color-white); font-size: var(--fs-2xl); cursor: pointer; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); border-radius: 50%; transition: var(--transition-fast); z-index: 1; }
 .lightbox-close:hover { background: rgba(255,255,255,0.2); }
 
 

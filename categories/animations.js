@@ -347,52 +347,79 @@ function initSmoothScroll() {
    lightbox overlay with the image. Closes on click or Escape.
    ========================================================== */
 function initLightbox() {
-  const galleryItems = document.querySelectorAll('.gallery-item img');
-  if (!galleryItems.length) return;
+  const photoItems = document.querySelectorAll('.gallery-item:not(.video-item) img');
+  const videoItems = document.querySelectorAll('.gallery-item.video-item');
+  if (!photoItems.length && !videoItems.length) return;
 
-  // Create lightbox DOM
-  const lightbox = document.createElement('div');
-  lightbox.className = 'lightbox';
-  lightbox.innerHTML = `
-    <button class="lightbox-close" aria-label="Close">
-      <i class="fas fa-times"></i>
-    </button>
-    <img src="" alt="Gallery image" id="lightbox-img">
-  `;
-  document.body.appendChild(lightbox);
+  // Reuse a single lightbox instance across repeated initLightbox() calls
+  // (populateGallery/populateVideoGallery each re-run this after injecting
+  // their content) instead of stacking up duplicate overlays.
+  let lightbox = document.querySelector('.lightbox');
+  if (!lightbox) {
+    lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+      <button class="lightbox-close" aria-label="Close">
+        <i class="fas fa-times"></i>
+      </button>
+      <img src="" alt="Gallery image" id="lightbox-img">
+      <video id="lightbox-video" controls playsinline></video>
+    `;
+    document.body.appendChild(lightbox);
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  }
 
   const lightboxImg = lightbox.querySelector('#lightbox-img');
+  const lightboxVideo = lightbox.querySelector('#lightbox-video');
 
-  function openLightbox(src, alt) {
+  function openImage(src, alt) {
+    lightboxVideo.pause();
+    lightboxVideo.removeAttribute('src');
+    lightboxVideo.hidden = true;
+    lightboxImg.hidden = false;
     lightboxImg.src = src;
     lightboxImg.alt = alt || '';
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden'; // Prevent background scroll
   }
 
+  function openVideo(src) {
+    lightboxImg.hidden = true;
+    lightboxVideo.hidden = false;
+    lightboxVideo.src = src;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lightboxVideo.play().catch(() => {}); // Autoplay can be blocked — controls are still visible
+  }
+
   function closeLightbox() {
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
+    lightboxVideo.pause();
+    lightboxVideo.removeAttribute('src');
+    lightboxVideo.load();
   }
 
-  // Open on image click
-  galleryItems.forEach(img => {
+  // Open on photo click
+  photoItems.forEach(img => {
     img.parentElement.addEventListener('click', () => {
-      openLightbox(img.src, img.alt);
+      openImage(img.src, img.alt);
     });
   });
 
-  // Close on lightbox background click
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
-
-  // Close on X button
-  lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
-
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeLightbox();
+  // Open on video tile click
+  videoItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const src = item.getAttribute('data-video-src');
+      if (src) openVideo(src);
+    });
   });
 }
 

@@ -22,6 +22,7 @@
       "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162466/pearl-safari/bwindi/trekking-certificate-2.jpg"
     ],
     "heroImage": "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162459/pearl-safari/bwindi/gorilla.jpg",
+    "videos": [],
     "video": null
   },
   "queen-elizabeth": {
@@ -54,7 +55,10 @@
       "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162496/pearl-safari/queen_elizabeth/lionss.jpg"
     ],
     "heroImage": "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162500/pearl-safari/queen_elizabeth/tree-climbing-lion.jpg",
-    "video": null
+    "videos": [
+      "https://res.cloudinary.com/dfqksoqvx/video/upload/f_auto,q_auto/v1790791905/pearl-safari/queen_elizabeth/queen-elizabeth-1.mp4"
+    ],
+    "video": "https://res.cloudinary.com/dfqksoqvx/video/upload/f_auto,q_auto/v1790791905/pearl-safari/queen_elizabeth/queen-elizabeth-1.mp4"
   },
   "murchison-falls": {
     "images": [
@@ -78,7 +82,14 @@
       "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162505/pearl-safari/murchison_falls/elephant.jpg"
     ],
     "heroImage": "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162833/pearl-safari/murchison_falls/falls.jpg",
-    "video": null
+    "videos": [
+      "https://res.cloudinary.com/dfqksoqvx/video/upload/f_auto,q_auto/v1790791918/pearl-safari/murchison_falls/giraffe.mp4",
+      "https://res.cloudinary.com/dfqksoqvx/video/upload/f_auto,q_auto/v1790791941/pearl-safari/murchison_falls/murchison-2.mp4",
+      "https://res.cloudinary.com/dfqksoqvx/video/upload/f_auto,q_auto/v1790791953/pearl-safari/murchison_falls/murchison-3.mp4",
+      "https://res.cloudinary.com/dfqksoqvx/video/upload/f_auto,q_auto/v1790791973/pearl-safari/murchison_falls/murchison-4.mp4",
+      "https://res.cloudinary.com/dfqksoqvx/video/upload/f_auto,q_auto/v1790791982/pearl-safari/murchison_falls/murchison-falls-1.mp4"
+    ],
+    "video": "https://res.cloudinary.com/dfqksoqvx/video/upload/f_auto,q_auto/v1790791918/pearl-safari/murchison_falls/giraffe.mp4"
   },
   "kidepo": {
     "images": [
@@ -94,6 +105,7 @@
       "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162521/pearl-safari/kidepoWild/gorillas.jpg"
     ],
     "heroImage": "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162525/pearl-safari/kidepoWild/kidepo4.jpg",
+    "videos": [],
     "video": null
   },
   "lake-bunyonyi": {
@@ -110,6 +122,7 @@
       "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162527/pearl-safari/lake_bunyonyi/boat.jpg"
     ],
     "heroImage": "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162531/pearl-safari/lake_bunyonyi/lake_view.jpg",
+    "videos": [],
     "video": null
   },
   "rwenzori": {
@@ -124,6 +137,7 @@
       "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162536/pearl-safari/rwenzori/climbing.jpg"
     ],
     "heroImage": "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162543/pearl-safari/rwenzori/snow_capped.jpg",
+    "videos": [],
     "video": null
   },
   "lake-mburo": {
@@ -139,6 +153,7 @@
       "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162545/pearl-safari/lake_mburo/boat_cruise.jpg"
     ],
     "heroImage": "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162551/pearl-safari/lake_mburo/rhino.jpg",
+    "videos": [],
     "video": null
   },
   "mgahinga": {
@@ -155,6 +170,9 @@
       "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162554/pearl-safari/mgahinga/commemorative-monument-2.jpg"
     ],
     "heroImage": "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162556/pearl-safari/mgahinga/golden-monkey.jpg",
+    "videos": [
+      "https://res.cloudinary.com/dfqksoqvx/video/upload/f_auto,q_auto/v1789162602/pearl-safari/mgahinga/mgahinga-trip.mp4"
+    ],
     "video": "https://res.cloudinary.com/dfqksoqvx/video/upload/f_auto,q_auto/v1789162602/pearl-safari/mgahinga/mgahinga-trip.mp4"
   },
   "_general": {

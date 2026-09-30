@@ -6,6 +6,11 @@
  * Usage:  node scripts/sync-cloudinary.mjs
  * Reads credentials from .env in the project root (CLOUDINARY_CLOUD_NAME,
  * CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET).
+ *
+ * Local assets are deleted after each sync (see CLOUDINARY_SETUP.md), so any
+ * park folder that doesn't exist locally at run time is left untouched in
+ * js/cloudinary-media.json — its previously-synced images/videos are kept
+ * rather than being wiped out.
  */
 
 import { readFile, writeFile, readdir } from 'node:fs/promises';
@@ -30,6 +35,15 @@ async function loadEnv() {
   return env;
 }
 
+async function loadExistingMedia() {
+  try {
+    const text = await readFile(path.join(ROOT, 'js', 'cloudinary-media.json'), 'utf8');
+    return JSON.parse(text);
+  } catch {
+    return {};
+  }
+}
+
 const env = await loadEnv();
 const CLOUD_NAME = env.CLOUDINARY_CLOUD_NAME;
 const API_KEY = env.CLOUDINARY_API_KEY;
@@ -40,7 +54,7 @@ if (!CLOUD_NAME || !API_KEY || !API_SECRET) {
   process.exit(1);
 }
 
-// Attraction id -> local image folder (relative to assets/images/)
+// Attraction id -> local folder name (relative to assets/images/ and assets/videos/)
 const PARK_FOLDERS = {
   'bwindi': 'bwindi',
   'queen-elizabeth': 'queen_elizabeth',
@@ -50,11 +64,6 @@ const PARK_FOLDERS = {
   'rwenzori': 'rwenzori',
   'lake-mburo': 'lake_mburo',
   'mgahinga': 'mgahinga',
-};
-
-// Attraction id -> local video file (relative to assets/videos/), or null
-const PARK_VIDEOS = {
-  'mgahinga': 'mgahinga/mgahinga-trip.mp4',
 };
 
 const GENERAL_IMAGE_FOLDER = 'general';
@@ -104,15 +113,15 @@ async function uploadFile(filePath, { folder, publicId, resourceType }) {
   return json.secure_url;
 }
 
-async function uploadImageFolder(attractionId, folderName, preferredOrder = []) {
+async function uploadImageFolder(folderName, preferredOrder = []) {
   const dir = path.join(ROOT, 'assets', 'images', folderName);
   let files;
   try {
     files = (await readdir(dir)).filter((f) => /\.(jpe?g|png|webp|avif|jfif)$/i.test(f));
   } catch {
-    console.warn(`No local folder for ${attractionId} (${dir}), skipping.`);
-    return [];
+    return null; // Local folder doesn't exist — caller should keep existing data.
   }
+  if (!files.length) return null;
 
   if (preferredOrder.length) {
     const rank = new Map(preferredOrder.map((name, i) => [name, i]));
@@ -139,9 +148,39 @@ async function uploadImageFolder(attractionId, folderName, preferredOrder = []) 
   return urls;
 }
 
-async function uploadVideo(relativePath, folder) {
+async function uploadVideoFolder(folderName) {
+  const dir = path.join(ROOT, 'assets', 'videos', folderName);
+  let files;
+  try {
+    files = (await readdir(dir)).filter((f) => /\.(mp4|mov|webm)$/i.test(f));
+  } catch {
+    return null; // Local folder doesn't exist — caller should keep existing data.
+  }
+  if (!files.length) return null;
+
+  const urls = [];
+  for (const file of files.sort()) {
+    const filePath = path.join(dir, file);
+    const publicId = path.parse(file).name;
+    console.log(`Uploading video: ${folderName}/${file}`);
+    const secureUrl = await uploadFile(filePath, {
+      folder: `pearl-safari/${folderName}`,
+      publicId,
+      resourceType: 'video',
+    });
+    urls.push(withTransform(secureUrl, VIDEO_TRANSFORM));
+  }
+  return urls;
+}
+
+async function uploadSingleVideo(relativePath, folder) {
   const filePath = path.join(ROOT, 'assets', 'videos', relativePath);
   const publicId = path.parse(relativePath).name;
+  try {
+    await readFile(filePath);
+  } catch {
+    return null; // Doesn't exist locally — caller should keep existing data.
+  }
   console.log(`Uploading video: ${relativePath}`);
   const secureUrl = await uploadFile(filePath, {
     folder: `pearl-safari/${folder}`,
@@ -152,7 +191,8 @@ async function uploadVideo(relativePath, folder) {
 }
 
 async function main() {
-  const media = {};
+  const existing = await loadExistingMedia();
+  const media = { ...existing };
 
   const dataJson = JSON.parse(await readFile(path.join(ROOT, 'js', 'data.json'), 'utf8'));
   const preferredOrders = {};
@@ -161,31 +201,43 @@ async function main() {
   }
 
   for (const [attractionId, folderName] of Object.entries(PARK_FOLDERS)) {
-    const images = await uploadImageFolder(attractionId, folderName, preferredOrders[attractionId] || []);
-    const video = PARK_VIDEOS[attractionId]
-      ? await uploadVideo(PARK_VIDEOS[attractionId], folderName)
-      : null;
+    const prev = existing[attractionId] || {};
+    const images = await uploadImageFolder(folderName, preferredOrders[attractionId] || []);
+    const videos = await uploadVideoFolder(folderName);
 
+    // prev.videos is the current schema; prev.video is the older singular
+    // field from before this script supported multiple videos per park —
+    // fall back to it too so a re-sync can't silently drop it.
+    const prevVideos = prev.videos?.length ? prev.videos : (prev.video ? [prev.video] : []);
+    const finalImages = images ?? prev.images ?? [];
+    const finalVideos = videos ?? prevVideos;
     media[attractionId] = {
-      images,
-      heroImage: images[0] || null,
-      video,
+      images: finalImages,
+      heroImage: finalImages[0] || prev.heroImage || null,
+      videos: finalVideos,
+      // Kept for backward compatibility with any older code reading .video
+      video: finalVideos[0] || null,
     };
   }
 
   // General (non-park-specific) images used directly in static HTML markup
-  media._general = {
-    images: await uploadImageFolder('_general', GENERAL_IMAGE_FOLDER),
-  };
-  media._general.byName = {};
-  const generalDir = path.join(ROOT, 'assets', 'images', GENERAL_IMAGE_FOLDER);
-  const generalFiles = (await readdir(generalDir)).filter((f) => /\.(jpe?g|png|webp)$/i.test(f));
-  generalFiles.forEach((file, i) => {
-    media._general.byName[path.parse(file).name] = media._general.images[i];
-  });
+  const generalImages = await uploadImageFolder(GENERAL_IMAGE_FOLDER);
+  if (generalImages) {
+    const byName = {};
+    let dir;
+    try {
+      dir = (await readdir(path.join(ROOT, 'assets', 'images', GENERAL_IMAGE_FOLDER)))
+        .filter((f) => /\.(jpe?g|png|webp)$/i.test(f));
+      dir.forEach((file, i) => { byName[path.parse(file).name] = generalImages[i]; });
+    } catch {}
+    media._general = { images: generalImages, byName };
+  } else if (!media._general) {
+    media._general = { images: [], byName: {} };
+  }
 
   // Sitewide hero video (index.html)
-  media._heroVideo = await uploadVideo(SITE_HERO_VIDEO, 'site');
+  const heroVideo = await uploadSingleVideo(SITE_HERO_VIDEO, 'site');
+  media._heroVideo = heroVideo ?? existing._heroVideo ?? null;
 
   const outPath = path.join(ROOT, 'js', 'cloudinary-media.json');
   await writeFile(outPath, JSON.stringify(media, null, 2));
