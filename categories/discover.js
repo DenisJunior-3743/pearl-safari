@@ -194,7 +194,7 @@ function buildDiscoverCard(attraction, index) {
 
         <!-- Card footer -->
         <div class="card-footer">
-          <span class="card-price">${attraction.price}</span>
+          <span class="card-price">${attraction.price || 'Contact Us'}</span>
           <span class="card-cta">
             Explore <i class="fas fa-arrow-right"></i>
           </span>

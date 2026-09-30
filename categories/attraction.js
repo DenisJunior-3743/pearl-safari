@@ -162,7 +162,7 @@ async function populateHero(attraction) {
         </div>
         <div class="detail-meta-tag">
           <i class="fas fa-tag"></i>
-          ${attraction.price}
+          ${attraction.price || 'Contact for pricing'}
         </div>
       </div>
 
@@ -339,8 +339,7 @@ function populateSidebar(attraction) {
 
       <!-- Price -->
       <div class="detail-sidebar-price">
-        ${attraction.price}
-        <span>/ per person</span>
+        ${attraction.price ? attraction.price : `Contact Us <span>for pricing</span>`}
       </div>
 
       <!-- Info table -->
@@ -458,7 +457,7 @@ function populateRelated(attraction, allAttractions) {
         <div class="card-tagline">${a.tagline}</div>
         <h4 class="card-title" style="font-size:1rem;">${a.name}</h4>
         <div class="card-footer">
-          <span class="card-price">${a.price}</span>
+          <span class="card-price">${a.price || 'Contact Us'}</span>
           <span class="card-cta">Explore <i class="fas fa-arrow-right"></i></span>
         </div>
       </div>

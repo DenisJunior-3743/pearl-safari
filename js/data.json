@@ -192,7 +192,7 @@
                 "https://res.cloudinary.com/dfqksoqvx/video/upload/f_auto,q_auto/v1790791905/pearl-safari/queen_elizabeth/queen-elizabeth-1.mp4"
             ],
             "featured": true,
-            "price": "From $200/person"
+            "price": null
         },
         {
             "id": "murchison-falls",
@@ -251,7 +251,7 @@
                 "https://res.cloudinary.com/dfqksoqvx/video/upload/f_auto,q_auto/v1790791982/pearl-safari/murchison_falls/murchison-falls-1.mp4"
             ],
             "featured": true,
-            "price": "From $180/person"
+            "price": null
         },
         {
             "id": "kidepo",
@@ -294,7 +294,7 @@
             "heroImage": "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162525/pearl-safari/kidepoWild/kidepo4.jpg",
             "video": null,
             "featured": true,
-            "price": "From $250/person"
+            "price": null
         },
         {
             "id": "lake-bunyonyi",
@@ -337,7 +337,7 @@
             "heroImage": "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162531/pearl-safari/lake_bunyonyi/lake_view.jpg",
             "video": null,
             "featured": true,
-            "price": "From $80/person"
+            "price": null
         },
         {
             "id": "rwenzori",
@@ -378,7 +378,7 @@
             "heroImage": "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162543/pearl-safari/rwenzori/snow_capped.jpg",
             "video": null,
             "featured": false,
-            "price": "From $1200/person"
+            "price": null
         },
         {
             "id": "lake-mburo",
@@ -421,7 +421,7 @@
             "heroImage": "https://res.cloudinary.com/dfqksoqvx/image/upload/f_auto,q_auto,dpr_auto/v1789162551/pearl-safari/lake_mburo/rhino.jpg",
             "video": null,
             "featured": false,
-            "price": "From $150/person"
+            "price": null
         },
         {
             "id": "mgahinga",
@@ -468,7 +468,7 @@
                 "https://res.cloudinary.com/dfqksoqvx/video/upload/f_auto,q_auto/v1789162602/pearl-safari/mgahinga/mgahinga-trip.mp4"
             ],
             "featured": false,
-            "price": "From $700/person"
+            "price": null
         },
         {
             "id": "kigali-city-tour",

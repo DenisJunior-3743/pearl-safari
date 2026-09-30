@@ -61,7 +61,7 @@ function renderFeaturedAttractions(attractions) {
         <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--color-text-light);">
           <i class="fas fa-clock"></i>
           <span>${attr.duration}</span>
-          <span style="margin-left:auto;">${attr.price}</span>
+          <span style="margin-left:auto;">${attr.price || 'Contact Us'}</span>
         </div>
       </div>
     </a>
